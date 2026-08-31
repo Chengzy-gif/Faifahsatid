@@ -4,6 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ห้องทดลองไฟฟ้าสถิต · ฟิสิกส์ ม.5</title>
+<meta name="description" content="สื่อการสอนไฟฟ้าสถิต ฟิสิกส์ ม.5 — ซิมูเลชันโต้ตอบ 7 ชุด เกมฝึกความเข้าใจ และเครื่องสุ่มโจทย์พร้อมใบงาน">
+<meta name="author" content="นักเรียนชั้น ม.5/3">
+<meta name="theme-color" content="#07070F">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="th_TH">
+<meta property="og:title" content="ห้องทดลองไฟฟ้าสถิต · ฟิสิกส์ ม.5">
+<meta property="og:description" content="สื่อการสอนไฟฟ้าสถิต ฟิสิกส์ ม.5 — ซิมูเลชันโต้ตอบ 7 ชุด เกมฝึกความเข้าใจ และเครื่องสุ่มโจทย์พร้อมใบงาน">
+<!-- หลัง deploy แล้ว เปลี่ยน 2 บรรทัดนี้เป็น URL เต็มของเว็บ เช่น https://ชื่อโปรเจกต์.vercel.app/og.png -->
+<meta property="og:image" content="og.png">
+<meta property="og:url" content="/">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600;700&family=IBM+Plex+Sans+Thai:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -226,19 +238,31 @@ input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;bac
 .rv.in{opacity:1;transform:none;transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
 
 /* ---------- credits ---------- */
-.members{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(268px,1fr))}
-.member{display:flex;align-items:center;gap:18px;padding:20px 22px}
-.mno{position:relative;width:58px;height:58px;flex:0 0 auto;border-radius:50%;display:grid;
-  place-items:center;font-family:"JetBrains Mono",monospace;font-size:1.02rem;font-weight:600;color:#1a1206;
-  background:radial-gradient(circle at 34% 30%,#ffe7b8,var(--brass));
-  box-shadow:0 0 0 1px rgba(233,176,75,.55),0 12px 28px -14px rgba(233,176,75,.95)}
-.orbit{position:absolute;inset:-9px;border-radius:50%;border:1px dashed rgba(233,176,75,.4);
+.members{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(252px,1fr))}
+@media(min-width:1020px){.members{grid-template-columns:repeat(3,1fr)}}
+.member{margin:0;padding:0;overflow:hidden;display:flex;flex-direction:column}
+.member::before,.member::after{display:none}
+.mphoto{position:relative;aspect-ratio:4/5;overflow:hidden;background:#101024}
+.mphoto img{width:100%;height:100%;object-fit:cover;display:block;
+  filter:saturate(.94) contrast(1.04);
+  transition:transform .7s cubic-bezier(.22,1,.36,1),filter .45s}
+.member:hover .mphoto img{transform:scale(1.055);filter:saturate(1.05) contrast(1.04)}
+.mphoto::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(7,7,15,0) 48%,rgba(7,7,15,.55) 78%,rgba(10,9,22,.92));
+  box-shadow:inset 0 0 90px rgba(7,7,15,.55)}
+.mno{position:absolute;right:18px;bottom:18px;z-index:2;width:54px;height:54px;border-radius:50%;
+  display:grid;place-items:center;font-family:"JetBrains Mono",monospace;font-size:1rem;font-weight:600;
+  color:#1a1206;background:radial-gradient(circle at 34% 30%,#ffe7b8,var(--brass));
+  box-shadow:0 0 0 1px rgba(233,176,75,.55),0 12px 30px -12px rgba(233,176,75,.95)}
+.orbit{position:absolute;inset:-9px;border-radius:50%;border:1px dashed rgba(233,176,75,.45);
   animation:spin 9s linear infinite}
 .orbit::after{content:"";position:absolute;top:-4px;left:50%;margin-left:-4px;width:8px;height:8px;
   border-radius:50%;background:var(--neg);box-shadow:0 0 10px var(--neg)}
 @keyframes spin{to{transform:rotate(360deg)}}
-.mname{font-family:"Anuphan",sans-serif;font-weight:600;font-size:1.06rem;line-height:1.4}
-.mclass{font-size:.85rem;color:var(--dim);font-family:"JetBrains Mono",monospace}
+.member figcaption{padding:20px 22px 22px}
+.mname{font-family:"Anuphan",sans-serif;font-weight:600;font-size:1.2rem;line-height:1.4;
+  letter-spacing:-.01em}
+.mclass{font-size:.86rem;color:var(--dim);font-family:"JetBrains Mono",monospace;margin-top:4px}
 /* ---------- flourishes ---------- */
 .aurora{transform:translate3d(calc(var(--px,0) * 16px),calc(var(--py,0) * 16px),0);
   transition:transform .8s cubic-bezier(.22,1,.36,1)}
@@ -743,56 +767,63 @@ body.present .ro b{font-size:1.18rem}
   <div class="head">
     <div class="eyebrow">หน่วยที่ 00</div>
     <h2>รายชื่อผู้จัดทำ</h2>
-    <p>สื่อการสอนเรื่องไฟฟ้าสถิต รายวิชาฟิสิกส์ ชั้นมัธยมศึกษาปีที่ 5</p>
+    <p>สื่อการสอนเรื่องไฟฟ้าสถิต รายวิชาฟิสิกส์ ชั้นมัธยมศึกษาปีที่ 5 ห้อง 3</p>
   </div>
 
   <div class="members">
-    <div class="card member">
-      <div class="mno"><span class="orbit" style="animation-duration:7s"></span>7</div>
-      <div><div class="mname">นายณฐกร เจริญผล</div><div class="mclass">ม.5/3 · เลขที่ 7</div></div>
-    </div>
-    <div class="card member">
-      <div class="mno"><span class="orbit" style="animation-duration:8s"></span>9</div>
-      <div><div class="mname">นายปุณณภพ คุ้มทรัพย์</div><div class="mclass">ม.5/3 · เลขที่ 9</div></div>
-    </div>
-    <div class="card member">
-      <div class="mno"><span class="orbit" style="animation-duration:9s"></span>14</div>
-      <div><div class="mname">นายศุภัช อรรถรุ่งโรจน์</div><div class="mclass">ม.5/3 · เลขที่ 14</div></div>
-    </div>
-    <div class="card member">
-      <div class="mno"><span class="orbit" style="animation-duration:10s"></span>16</div>
-      <div><div class="mname">นายทรงธรรม ลุจนานนท์</div><div class="mclass">ม.5/3 · เลขที่ 16</div></div>
-    </div>
-    <div class="card member">
-      <div class="mno"><span class="orbit" style="animation-duration:11s"></span>20</div>
-      <div><div class="mname">นายพชร อัมพรมหา</div><div class="mclass">ม.5/3 · เลขที่ 20</div></div>
-    </div>
-    <div class="card member">
-      <div class="mno"><span class="orbit" style="animation-duration:12s"></span>30</div>
-      <div><div class="mname">นายชนกนันท์ ประเสริฐกิตติกุล</div><div class="mclass">ม.5/3 · เลขที่ 30</div></div>
-    </div>
+    <figure class="card member">
+      <div class="mphoto">
+        <img src="photos/m07.jpg" width="720" height="900" loading="lazy" decoding="async" alt="นายณฐกร เจริญผล">
+        <span class="mno"><span class="orbit" style="animation-duration:7.5s"></span>7</span>
+      </div>
+      <figcaption><div class="mname">นายณฐกร เจริญผล</div><div class="mclass">ม.5/3 · เลขที่ 7</div></figcaption>
+    </figure>
+    <figure class="card member">
+      <div class="mphoto">
+        <img src="photos/m09.jpg" width="720" height="900" loading="lazy" decoding="async" alt="นายปุณณภพ คุ้มทรัพย์">
+        <span class="mno"><span class="orbit" style="animation-duration:8.4s"></span>9</span>
+      </div>
+      <figcaption><div class="mname">นายปุณณภพ คุ้มทรัพย์</div><div class="mclass">ม.5/3 · เลขที่ 9</div></figcaption>
+    </figure>
+    <figure class="card member">
+      <div class="mphoto">
+        <img src="photos/m14.jpg" width="720" height="900" loading="lazy" decoding="async" alt="นายศุภัช อรรถรุ่งโรจน์">
+        <span class="mno"><span class="orbit" style="animation-duration:9.3s"></span>14</span>
+      </div>
+      <figcaption><div class="mname">นายศุภัช อรรถรุ่งโรจน์</div><div class="mclass">ม.5/3 · เลขที่ 14</div></figcaption>
+    </figure>
+    <figure class="card member">
+      <div class="mphoto">
+        <img src="photos/m16.jpg" width="720" height="900" loading="lazy" decoding="async" alt="นายทรงธรรม ลุจนานนท์">
+        <span class="mno"><span class="orbit" style="animation-duration:10.2s"></span>16</span>
+      </div>
+      <figcaption><div class="mname">นายทรงธรรม ลุจนานนท์</div><div class="mclass">ม.5/3 · เลขที่ 16</div></figcaption>
+    </figure>
+    <figure class="card member">
+      <div class="mphoto">
+        <img src="photos/m20.jpg" width="720" height="900" loading="lazy" decoding="async" alt="นายพชร อัมพรมหา">
+        <span class="mno"><span class="orbit" style="animation-duration:11.1s"></span>20</span>
+      </div>
+      <figcaption><div class="mname">นายพชร อัมพรมหา</div><div class="mclass">ม.5/3 · เลขที่ 20</div></figcaption>
+    </figure>
+    <figure class="card member">
+      <div class="mphoto">
+        <img src="photos/m30.jpg" width="720" height="900" loading="lazy" decoding="async" alt="นายชนกนันท์ ประเสริฐกิตติกุล">
+        <span class="mno"><span class="orbit" style="animation-duration:12.0s"></span>30</span>
+      </div>
+      <figcaption><div class="mname">นายชนกนันท์ ประเสริฐกิตติกุล</div><div class="mclass">ม.5/3 · เลขที่ 30</div></figcaption>
+    </figure>
   </div>
 
-  <div class="grid g2" style="margin-top:20px">
-    <div class="card">
-      <h3>เกี่ยวกับสื่อการสอนนี้</h3>
-      <p>เว็บไซต์สื่อการสอนเรื่องไฟฟ้าสถิต ประกอบด้วยเนื้อหา 8 หน่วย ซิมูเลชันโต้ตอบ 7 ชุด เกมฝึกความเข้าใจ 3 แบบ และเครื่องสุ่มโจทย์พร้อมใบงานสำหรับพิมพ์</p>
-      <ul>
-        <li>ค่าที่แสดงทุกจุดคำนวณจากสูตรจริง ใช้ตรวจคำตอบโจทย์ได้</li>
-        <li>ทำงานได้ทั้งคอมพิวเตอร์ แท็บเล็ต และโทรศัพท์</li>
-        <li>มีโหมดฉายสำหรับใช้กับโปรเจกเตอร์ในห้องเรียน</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>เครื่องมือที่ใช้พัฒนา</h3>
-      <ul>
-        <li><b>HTML · CSS · JavaScript</b> — เขียนเองทั้งหมด ไม่ใช้เฟรมเวิร์ก</li>
-        <li><b>Canvas API</b> — ซิมูเลชันสนามไฟฟ้า แรงคูลอมบ์ และเกม</li>
-        <li><b>KaTeX</b> — จัดพิมพ์สูตรคณิตศาสตร์</li>
-        <li><b>Lucide</b> — ชุดไอคอน</li>
-        <li><b>canvas-confetti</b> — เอฟเฟกต์ในเกม</li>
-      </ul>
-    </div>
+  <div class="card" style="margin-top:24px">
+    <h3>เครื่องมือที่ใช้พัฒนา</h3>
+    <ul>
+      <li><b>HTML · CSS · JavaScript</b> — เขียนเองทั้งหมด ไม่ใช้เฟรมเวิร์ก</li>
+      <li><b>Canvas API</b> — ซิมูเลชันสนามไฟฟ้า แรงคูลอมบ์ แผ่นคู่ขนาน และเกม</li>
+      <li><b>KaTeX</b> — จัดพิมพ์สูตรคณิตศาสตร์</li>
+      <li><b>Lucide</b> — ชุดไอคอน</li>
+      <li><b>canvas-confetti</b> — เอฟเฟกต์ในเกม</li>
+    </ul>
   </div>
 </section>
 
